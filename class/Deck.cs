@@ -22,11 +22,6 @@ public class Deck
         new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR)
     };
 
-    public Deck()
-    {
-
-    }
-
     public ArrayList<Card> Shuffle()
     {
         Random rand = new Random();
