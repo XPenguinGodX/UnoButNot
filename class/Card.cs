@@ -1,13 +1,16 @@
-using Enums.Color;
-using Enums.Symbol;
-public class Card
+namespace UnoButNot.@class
 {
-    public Color cardColor;
-    public Symbol cardValue;
-
-    public Card(Color color, Symbol value)
+    using Enums.Color;
+    using Enums.Symbol;
+    public class Card
     {
-        cardColor = color;
-        cardValue = value;
+        public Color cardColor;
+        public Symbol cardValue;
+
+        public Card(Color color, Symbol value)
+        {
+            cardColor = color;
+            cardValue = value;
+        }
     }
 }

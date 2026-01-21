@@ -1,12 +1,14 @@
-using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Collections;
-
-public class Deck
+namespace UnoButNot.@class.Deck
 {
-    private static readonly Card[] cards = new Card[]
+    using System.Xml.Serialization;
+    using System.Collections.Generic;
+    using System.Reflection.Metadata;
+    using System.Collections;
+
+    public class Deck
     {
+        private static readonly Card[] cards = new Card[]
+        {
         new Card(Color.RED, Symbol.ZERO), new Card(Color.RED, Symbol.ONE), new Card(Color.RED, Symbol.TWO), new Card(Color.RED, Symbol.THREE), new Card(Color.RED, Symbol.FOUR), new Card(Color.RED, Symbol.FIVE), new Card(Color.RED, Symbol.SIX), new Card(Color.RED, Symbol.SEVEN), new Card(Color.RED, Symbol.EIGHT), new Card(Color.RED, Symbol.NINE), new Card(Color.RED, Symbol.ONE), new Card(Color.RED, Symbol.TWO), new Card(Color.RED, Symbol.THREE), new Card(Color.RED, Symbol.FOUR), new Card(Color.RED, Symbol.FIVE), new Card(Color.RED, Symbol.SIX), new Card(Color.RED, Symbol.SEVEN), new Card(Color.RED, Symbol.EIGHT), new Card(Color.RED, Symbol.NINE),
         new Card(Color.RED, Symbol.SKIP), new Card(Color.RED, Symbol.REVERSE), new Card(Color.RED, Symbol.DRAW_TWO), new Card(Color.RED, Symbol.SKIP), new Card(Color.RED, Symbol.REVERSE), new Card(Color.RED, Symbol.DRAW_TWO),
 
@@ -20,27 +22,34 @@ public class Deck
         new Card(Color.YELLOW, Symbol.SKIP), new Card(Color.YELLOW, Symbol.REVERSE), new Card(Color.YELLOW, Symbol.DRAW_TWO), new Card(Color.YELLOW, Symbol.SKIP), new Card(Color.YELLOW, Symbol.REVERSE), new Card(Color.YELLOW, Symbol.DRAW_TWO),
 
         new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR)
-    };
+        };
+        private static List<Card> deck = new List<Card>();
 
-    public ArrayList<Card> Shuffle()
-    {
-        Random rand = new Random();
-
-        int n = cards.Length;
-        ArrayList<Card> shuffledDeck = new ArrayList<Card>();
-        int[] numArray = new int[n];
-        for (int i = 0; i < n; i++)
+        public Deck()
         {
-            //making sure there are no duplicates
-            int randNum = rand.Next(0, n);
-            while (numArray.Contains(randNum))
-            {
-                randNum = rand.Next(0, n);
-            }
-
-            numArray[i] = randNum;
-            shuffledDeck.Add(cards[randNum]);
+            deck = Shuffle();
         }
-        return shuffledDeck;
+
+        public List<Card> Shuffle()
+        {
+            Random rand = new Random();
+
+            int n = cards.Length;
+            List<Card> shuffledDeck = new List<Card>();
+            int[] numArray = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                //making sure there are no duplicates
+                int randNum = rand.Next(0, n);
+                while (numArray.Contains(randNum))
+                {
+                    randNum = rand.Next(0, n);
+                }
+
+                numArray[i] = randNum;
+                shuffledDeck.Add(cards[randNum]);
+            }
+            return shuffledDeck;
+        }
     }
 }

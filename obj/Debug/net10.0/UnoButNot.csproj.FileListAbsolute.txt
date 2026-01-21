@@ -1,0 +1,5 @@
+C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.GeneratedMSBuildEditorConfig.editorconfig
+C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.AssemblyInfoInputs.cache
+C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.AssemblyInfo.cs
+C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.csproj.CoreCompileInputs.cache
+C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.sourcelink.json

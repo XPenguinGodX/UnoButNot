@@ -1,8 +1,11 @@
-enum Color
+namespace UnoButNot.Enums
 {
-    RED,
-    GREEN,
-    BLUE,
-    YELLOW,
-    WILD
+enum Color
+    {
+        RED,
+        GREEN,
+        BLUE,
+        YELLOW,
+        WILD
+    }
 }

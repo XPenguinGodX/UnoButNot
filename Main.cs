@@ -1,9 +1,10 @@
 using System;
-
+using UnoButNot.modules;
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var game = new Uno();
+        game.StartGame();
     }
 }
