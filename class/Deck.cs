@@ -33,26 +33,23 @@ namespace UnoButNot.@class
             Console.WriteLine("Deck Created and Shuffled!");
         }
 
+
         public List<Card> Shuffle()
         {
             Random rand = new Random();
+            List<Card> shuffledDeck = cards.ToList(); // Copy original deck
 
-            int n = cards.Length;
-            List<Card> shuffledDeck = new List<Card>();
-            int[] numArray = new int[n];
-            for (int i = 0; i < n; i++)
+            for (int i = shuffledDeck.Count - 1; i > 0; i--)
             {
-                //making sure there are no duplicates
-                int randNum = rand.Next(0, n);
-                while (numArray.Contains(randNum))
-                {
-                    randNum = rand.Next(0, n);
-                }
-
-                numArray[i] = randNum;
-                shuffledDeck.Add(cards[randNum]);
+                //swaps cards with a random index that has already been added which shuffles the deck faster but less randomly
+                int j = rand.Next(0, i + 1); 
+                Card temp = shuffledDeck[i];
+                shuffledDeck[i] = shuffledDeck[j];
+                shuffledDeck[j] = temp;
             }
+
             return shuffledDeck;
         }
+
     }
 }

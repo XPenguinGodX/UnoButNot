@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoButNot", "UnoButNot.csproj", "{2F32A742-45D6-006B-66D8-25CE6028DB3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F32A742-45D6-006B-66D8-25CE6028DB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F32A742-45D6-006B-66D8-25CE6028DB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F32A742-45D6-006B-66D8-25CE6028DB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F32A742-45D6-006B-66D8-25CE6028DB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00E02014-DC17-4CF4-B687-F5C3E535A3D8}
+	EndGlobalSection
+EndGlobal
