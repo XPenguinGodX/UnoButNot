@@ -1,9 +1,10 @@
-namespace UnoButNot.@class.Deck
+namespace UnoButNot.@class
 {
     using System.Xml.Serialization;
     using System.Collections.Generic;
     using System.Reflection.Metadata;
     using System.Collections;
+    using UnoButNot.Enums;
 
     public class Deck
     {
@@ -27,7 +28,9 @@ namespace UnoButNot.@class.Deck
 
         public Deck()
         {
+            Console.WriteLine("Creating and Shuffling Deck...");
             deck = Shuffle();
+            Console.WriteLine("Deck Created and Shuffled!");
         }
 
         public List<Card> Shuffle()

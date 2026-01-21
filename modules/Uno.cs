@@ -1,4 +1,4 @@
-namespace UnoButNot.Modules
+namespace UnoButNot.modules
 {
     //This method should be used to handle the game and should have no methods that handle game logic. 
     //This should only make the game run as it should and call all the methods from another class.
@@ -6,6 +6,7 @@ namespace UnoButNot.Modules
     //these import stuff so I can use arrayList
     using System.Xml.Serialization;
     using System.Collections.Generic;
+    using UnoButNot.@class;
     public class Uno
     {
         //this List will hold the players and each unique number represents a player.
@@ -15,7 +16,7 @@ namespace UnoButNot.Modules
         public void StartGame()
         {
             Deck deck = new Deck();
-            System.Console.WriteLine("Game Started!");
+            Console.WriteLine("Game Started!");
             //We need to ask how many players there will be
         }
     }

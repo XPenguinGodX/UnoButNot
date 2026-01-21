@@ -1,7 +1,6 @@
 namespace UnoButNot.@class
 {
-    using Enums.Color;
-    using Enums.Symbol;
+    using UnoButNot.Enums;
     public class Card
     {
         public Color cardColor;

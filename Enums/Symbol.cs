@@ -1,7 +1,7 @@
-namespace UnoButNot.enums
+namespace UnoButNot.Enums
 {
 
-    enum Symbol
+    public enum Symbol
     {
         ZERO,
         ONE,

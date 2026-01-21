@@ -1,6 +1,6 @@
 namespace UnoButNot.Enums
 {
-enum Color
+    public enum Color
     {
         RED,
         GREEN,
