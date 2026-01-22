@@ -15,9 +15,11 @@ namespace UnoButNot.modules
         //this List will hold the players and each unique number represents a player.
         //we should loop through this for the order of players for each turn
         List<Player> players = new List<Player>();
+        GameUI UI = new GameUI();
         //This method should start the game and call all the methods needed to run the game.
         public void StartGame()
         {
+            UI.displayCard(new Card("Red", "5"));
             Deck deck = new Deck();
             Console.WriteLine("Game Started!");
             Console.WriteLine("How many players are there?");

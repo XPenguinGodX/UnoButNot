@@ -29,7 +29,15 @@ namespace GameUI.views
             return playerCount;
         }
 
-        
+        public string displayCard(Card card)
+        {
+            stringBuilder sb = new StringBuilder();
+            sb.Append("==================\n");
+            sb.Append("|${card.cardValue}|\n");
+            System.Console.WriteLine(sb.ToString());
+            return sb.ToString();
+        }
+
 
 
 
