@@ -14,7 +14,7 @@ namespace UnoButNot.modules
     {
         //this List will hold the players and each unique number represents a player.
         //we should loop through this for the order of players for each turn
-        List<int> players = new List<int>();
+        List<Player> players = new List<Player>();
         //This method should start the game and call all the methods needed to run the game.
         public void StartGame()
         {
@@ -35,17 +35,23 @@ namespace UnoButNot.modules
                 }
             for (int i = 1; i <= numPlayers; i++)
             {
-                players.Add(i);
+                players.Add(new Player(i));
             }
-            while(!winGame())
+            //give each player 7 cards right here (not the while loop)
+
+            while(!winGame(players))
             {
                 
             }
             //We need to ask how many players there will be
         }
-        private bool winGame()
+        private bool winGame(List<Player> players)
         {
-            //this method should check if a player has won the game
+            foreach (Player p in players)
+            {
+                if (p.playerHand.Count == 0)
+                    return true;
+            }
             return false;
         }
     }
