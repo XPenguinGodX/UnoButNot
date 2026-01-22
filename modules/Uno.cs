@@ -43,5 +43,10 @@ namespace UnoButNot.modules
             }
             //We need to ask how many players there will be
         }
+        private bool winGame()
+        {
+            //this method should check if a player has won the game
+            return false;
+        }
     }
 }
