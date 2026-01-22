@@ -7,6 +7,9 @@ namespace UnoButNot.modules
     using System.Xml.Serialization;
     using System.Collections.Generic;
     using UnoButNot.@class;
+    using System.IO;
+    using System;
+
     public class Uno
     {
         //this List will hold the players and each unique number represents a player.
@@ -17,6 +20,27 @@ namespace UnoButNot.modules
         {
             Deck deck = new Deck();
             Console.WriteLine("Game Started!");
+            Console.WriteLine("How many players are there?");
+            int numPlayers = 0;
+            while(numPlayers <= 0 || numPlayers > 4)
+                try
+                {
+                    numPlayers = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                    StartGame();
+                    return;
+                }
+            for (int i = 1; i <= numPlayers; i++)
+            {
+                players.Add(i);
+            }
+            while(!winGame())
+            {
+                
+            }
             //We need to ask how many players there will be
         }
     }
