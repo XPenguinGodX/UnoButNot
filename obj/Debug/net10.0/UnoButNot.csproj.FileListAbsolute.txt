@@ -13,3 +13,11 @@ C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\refint\
 C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.pdb
 C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\UnoButNot.genruntimeconfig.cache
 C:\coding\Principles of Software Engineering\UnoButNot\obj\Debug\net10.0\ref\UnoButNot.dll
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.AssemblyInfoInputs.cache
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.AssemblyInfo.cs
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.csproj.CoreCompileInputs.cache
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.sourcelink.json
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.dll
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\refint\UnoButNot.dll
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.pdb
