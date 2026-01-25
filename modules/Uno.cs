@@ -9,17 +9,18 @@ namespace UnoButNot.modules
     using UnoButNot.@class;
     using System.IO;
     using System;
+    using GameUI.views;
 
     public class Uno
     {
         //this List will hold the players and each unique number represents a player.
         //we should loop through this for the order of players for each turn
         List<Player> players = new List<Player>();
-        GameUI UI = new GameUI();
+        GUI ui = new GUI();
         //This method should start the game and call all the methods needed to run the game.
         public void StartGame()
         {
-            UI.displayCard(new Card("Red", "5"));
+            ui.displayCard(new Card(Enums.Color.RED, Enums.Symbol.FIVE));
             Deck deck = new Deck();
             Console.WriteLine("Game Started!");
             Console.WriteLine("How many players are there?");
@@ -34,6 +35,10 @@ namespace UnoButNot.modules
                     Console.WriteLine("Please enter a valid number.");
                     StartGame();
                     return;
+                }
+                catch(IOException)
+                {
+                    
                 }
             for (int i = 1; i <= numPlayers; i++)
             {

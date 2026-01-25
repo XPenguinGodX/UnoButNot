@@ -21,3 +21,10 @@ C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNo
 C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.dll
 C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\refint\UnoButNot.dll
 C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.pdb
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\bin\Debug\net10.0\UnoButNot.exe
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\bin\Debug\net10.0\UnoButNot.deps.json
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\bin\Debug\net10.0\UnoButNot.runtimeconfig.json
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\bin\Debug\net10.0\UnoButNot.dll
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\bin\Debug\net10.0\UnoButNot.pdb
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\UnoButNot.genruntimeconfig.cache
+C:\Neumont\Q6\SoftwarePrinciples\OurUnoGame\UnoButNot\obj\Debug\net10.0\ref\UnoButNot.dll
