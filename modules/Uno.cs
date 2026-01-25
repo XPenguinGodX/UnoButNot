@@ -20,26 +20,13 @@ namespace UnoButNot.modules
         //This method should start the game and call all the methods needed to run the game.
         public void StartGame()
         {
-            ui.displayCard(new Card(Enums.Color.RED, Enums.Symbol.FIVE));
+            ui.Clear();
+            ui.DisplayWelcome();
             Deck deck = new Deck();
-            Console.WriteLine("Game Started!");
-            Console.WriteLine("How many players are there?");
+            
             int numPlayers = 0;
             while(numPlayers <= 0 || numPlayers > 4)
-                try
-                {
-                    numPlayers = int.Parse(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                    StartGame();
-                    return;
-                }
-                catch(IOException)
-                {
-                    
-                }
+                numPlayers= ui.getPlayerCount();
             for (int i = 1; i <= numPlayers; i++)
             {
                 players.Add(new Player(i));
