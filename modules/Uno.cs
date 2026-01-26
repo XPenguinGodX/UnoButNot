@@ -4,7 +4,6 @@ namespace UnoButNot.modules
     //This should only make the game run as it should and call all the methods from another class.
 
     //these import stuff so I can use arrayList
-    using System.Xml.Serialization;
     using System.Collections.Generic;
     using UnoButNot.@class;
     using System.IO;
@@ -32,7 +31,15 @@ namespace UnoButNot.modules
                 players.Add(new Player(i));
             }
             //give each player 7 cards right here (not the while loop)
-
+            foreach (Player p in players)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    p.playerHand.Add(Deck.deck[0]);
+                    Deck.deck.RemoveAt(0);
+                }
+            }
+            
             while(!winGame(players))
             {
                 

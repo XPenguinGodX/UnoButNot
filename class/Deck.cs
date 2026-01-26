@@ -24,7 +24,7 @@ namespace UnoButNot.@class
 
         new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR), new Card(Color.WILD, Symbol.WILD), new Card(Color.WILD, Symbol.DRAW_FOUR)
         };
-        private static List<Card> deck = new List<Card>();
+        public static List<Card> deck = new List<Card>();
 
         public Deck()
         {
