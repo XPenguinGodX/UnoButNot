@@ -10,5 +10,10 @@ namespace UnoButNot.@class
             playerID = id;
             playerHand = new List<Card>();
         }
+
+        public int getID()
+        {
+            return playerID;
+        }
     }
 }

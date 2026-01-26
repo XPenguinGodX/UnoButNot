@@ -15,6 +15,7 @@ namespace UnoButNot.modules
         //this List will hold the players and each unique number represents a player.
         //we should loop through this for the order of players for each turn
         List<Player> players = new List<Player>();
+        Player currentPlayer = null;
         GUI ui = new GUI();
         //This method should start the game and call all the methods needed to run the game.
         public void StartGame()
@@ -55,5 +56,24 @@ namespace UnoButNot.modules
             }
             return false;
         }
+
+        public void preformTurn(Player player)
+        {
+            bool playing = true;
+
+            while (playing)
+            {
+                ui.Clear();
+                ui.DisplayTurnHeader(player);
+
+                ui.PromptPlayerAction();
+                int input = ui.PromptCardIndexToPlay();
+
+
+            }
+
+        }
+
+
     }
 }
