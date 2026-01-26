@@ -118,7 +118,14 @@ namespace GameUI.views
 
         public void Clear()
         {
-            Console.Clear();
+            try
+            {
+                Console.Clear();
+            }
+            catch (IOException)
+            {
+                // Ignore any exceptions
+            }
         }
 
         
@@ -257,5 +264,33 @@ namespace GameUI.views
                 _ => symbol.ToString()
             };
         }
+
+        // Asks the player which card to play (or draw)
+        public Card GetPlayerMove(Player player, Card topCard)
+        {
+            DisplayTurnHeader(player);
+            DisplayTopCard(topCard);
+            DisplayHand(player);
+
+    string action = PromptPlayerAction();
+    if (action == "play")
+    {
+        if (player.playerHand.Count == 0)
+        {
+            Console.WriteLine("No cards to play. You must draw.");
+            return null;
+        }
+        int idx = PromptCardIndexToPlay(player.playerHand.Count);
+        return player.playerHand[idx];
+    }
+            // if they chose draw
+            return null;
+        }
+
+// Ask the player what color they want for a Wild card
+    public Color ChooseColor()
+    {
+    return PromptWildColor();
+    }
     }
 }
