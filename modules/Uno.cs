@@ -4,7 +4,6 @@ namespace UnoButNot.modules
     //This should only make the game run as it should and call all the methods from another class.
 
     //these import stuff so I can use arrayList
-    using System.Xml.Serialization;
     using System.Collections.Generic;
     using UnoButNot.@class;
     using UnoButNot.Enums;
