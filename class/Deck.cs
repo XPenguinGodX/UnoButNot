@@ -50,6 +50,6 @@ namespace UnoButNot.@class
 
             return shuffledDeck;
         }
-
+        public List<Card> Cards => deck;
     }
 }
