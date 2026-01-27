@@ -1,168 +1,219 @@
 namespace UnoButNot.modules
 {
-    //This method should be used to handle the game and should have no methods that handle game logic. 
-    //This should only make the game run as it should and call all the methods from another class.
-
-    //these import stuff so I can use arrayList
+    using System;
     using System.Collections.Generic;
     using UnoButNot.@class;
     using UnoButNot.Enums;
-    using System.IO;
-    using System;
-    using System.Collections.Generic;
     using GameUI.views;
 
     public class Uno
     {
-        private void DebugState(string message)
-{
-    Console.WriteLine("\n--- " + message + " ---");
-    Console.WriteLine($"Top Card: {topCard.cardColor} {topCard.cardValue}");
-    Console.WriteLine($"Active Color: {activeColor}");
-    Console.WriteLine($"Current Player: {players[currentPlayerIndex].playerID}");
-    Console.WriteLine($"Direction: {(direction == 1 ? "Clockwise" : "Counter-Clockwise")}");
-}
+        
+        private readonly List<Player> players = new List<Player>();
+        private readonly GUI ui = new GUI();
 
-        //this List will hold the players and each unique number represents a player.
-        //we should loop through this for the order of players for each turn
-        List<Player> players = new List<Player>();
-        Player currentPlayer = null;
-        GUI ui = new GUI();
-
+        
         private int currentPlayerIndex = 0;
-        private int direction = 1;
+        private int direction = 1; 
+
+        
         private Card topCard;
         private Color activeColor;
-        //This method should start the game and call all the methods needed to run the game.
+
+        
+        private readonly List<Card> discardPile = new List<Card>();
+
         public void StartGame()
         {
             ui.Clear();
             ui.DisplayWelcome();
-            Deck deck = new Deck();
-            
-            int numPlayers = 0;
-            while(numPlayers <= 0 || numPlayers > 4)
-                numPlayers= ui.getPlayerCount();
+
+            Deck deckObj = new Deck();
+            List<Card> drawPile = deckObj.Cards;
+
+            int numPlayers = ui.getPlayerCount();
+
+            players.Clear();
             for (int i = 1; i <= numPlayers; i++)
-            {
                 players.Add(new Player(i));
-            }
-            //give each player 7 cards right here (not the while loop)
+
+            
             for (int i = 0; i < 7; i++)
             {
                 foreach (Player p in players)
-                {
-                DrawCards(p, deck.Cards, 1);
-                }
+                    DrawCards(p, drawPile, 1);
             }
-            topCard = deck.Cards[0];
-            deck.Cards.RemoveAt(0);
-            activeColor = topCard.cardColor;
 
+            
+            SetStartingTopCard(drawPile);
 
-            while(!winGame(players))
+            while (true)
             {
+                Player current = players[currentPlayerIndex];
+                bool playedCard = false;
+                bool turnComplete = false;
+                while (!turnComplete)
+                {
+                    Card? chosen = ui.GetPlayerMove(current, topCard);
+
+                    if (chosen == null)
+                    {
+                        DrawCards(current, drawPile, 1);
+                        turnComplete = true;
+                    }
+                    else if (CanPlayCard(chosen))
+                    {
+                        int skip = PlayCard(current, chosen, drawPile);
+                        if (current.playerHand.Count == 0)
+                        {
+                            ui.ShowMessage($"Game Over! Player {current.playerID} wins!");
+                            return;
+                        }
+
+                        AdvanceTurn(skip);
+                        playedCard = true;
+                        turnComplete = true;
+                    }
+                    else
+                    {
+                        ui.ShowMessage("Invalid card! You must match color/value or play a Wild.");
+                    }
+                }
+
                 
-            Player current = players[currentPlayerIndex];
-
-            bool turnComplete = false;
-
-            while (!turnComplete)
-            {
-                Card chosen = ui.GetPlayerMove(current, topCard);
-
-               if (chosen == null) // player chose to draw
+                if (!playedCard)
                 {
-                    DrawCards(current, deck.Cards, 1);
-                    turnComplete = true;
-                }
-                else if (CanPlayCard(chosen))
-                {
-                    PlayCard(current, chosen, deck.Cards);
-                    turnComplete = true;
-                }
-                else
-                {
-                    ui.ShowMessage("Invalid card! You must play a card that matches the color, value, or is a Wild.");
+                    AdvanceTurn();
                 }
             }
-            AdvanceTurn();
         }
-        ui.ShowMessage("Game Over! We have a winner!");
-}
-            private bool winGame(List<Player> players)
+
+        private void SetStartingTopCard(List<Card> drawPile)
+        {
+            while (true)
             {
-            foreach (Player p in players)
-            {
-                if (p.playerHand.Count == 0)
-                    return true;
+                RefillDeckIfEmpty(drawPile);
+
+                topCard = drawPile[0];
+                drawPile.RemoveAt(0);
+
+                
+                bool isActionOrWild =
+                    topCard.cardColor == Color.WILD ||
+                    topCard.cardValue == Symbol.SKIP ||
+                    topCard.cardValue == Symbol.REVERSE ||
+                    topCard.cardValue == Symbol.DRAW_TWO ||
+                    topCard.cardValue == Symbol.DRAW_FOUR;
+
+                if (!isActionOrWild)
+                {
+                    activeColor = topCard.cardColor;
+                    return;
+                }
+
+                
+                discardPile.Add(topCard);
             }
-            return false;
-            }
+        }
 
         private void AdvanceTurn(int skip = 0)
-        { 
+        {
             currentPlayerIndex =
                 (currentPlayerIndex + direction * (1 + skip) + players.Count) % players.Count;
         }
-        private void DrawCards(Player player, List<Card> deck, int count)
+
+        private void DrawCards(Player player, List<Card> drawPile, int count)
         {
-        for (int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
+            {
+                RefillDeckIfEmpty(drawPile);
+                if (drawPile.Count == 0) return;
+
+                player.playerHand.Add(drawPile[0]);
+                drawPile.RemoveAt(0);
+            }
+        }
+
+        private void RefillDeckIfEmpty(List<Card> drawPile)
         {
-        if (deck.Count == 0) return;
-        player.playerHand.Add(deck[0]);
-        deck.RemoveAt(0);
+            if (drawPile.Count > 0) return;
+            if (discardPile.Count == 0) return;
+            drawPile.AddRange(discardPile);
+            discardPile.Clear();
+            ShuffleInPlace(drawPile);
         }
+
+        private void ShuffleInPlace(List<Card> list)
+        {
+            Random rand = new Random();
+            for (int i = list.Count - 1; i > 0; i--)
+            {
+                int j = rand.Next(0, i + 1);
+                Card temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
         }
 
-    private void ApplyCardEffect(Card card, List<Card> deck)
-    {
-    switch (card.cardValue)
-    {
-        case Symbol.SKIP:
-            AdvanceTurn(skip: 1);
-            break;
+        private bool CanPlayCard(Card card)
+        {
+            return card.cardColor == activeColor ||
+                   card.cardColor == Color.WILD ||
+                   card.cardValue == topCard.cardValue;
+        }
 
-        case Symbol.REVERSE:
-            direction *= -1;
-            if (players.Count == 2)
-                AdvanceTurn(skip: 1);
-            break;
+        private int ApplyCardEffect(Card card, List<Card> drawPile)
+        {
+            switch (card.cardValue)
+            {
+                case Symbol.SKIP:
+                    return 1;
 
-        case Symbol.DRAW_TWO:
-            AdvanceTurn();
-            DrawCards(players[currentPlayerIndex], deck, 2);
-            AdvanceTurn(); 
-            break;
+                case Symbol.REVERSE:
+                    direction *= -1;
+                    
+                    if (players.Count == 2)
+                        return 1;
+                    return 0;
 
-        case Symbol.DRAW_FOUR:
-            AdvanceTurn();
-            DrawCards(players[currentPlayerIndex], deck, 4);
-            AdvanceTurn(); 
-            break;
+                case Symbol.DRAW_TWO:
+                    
+                    int nextIdx2 = (currentPlayerIndex + direction + players.Count) % players.Count;
+                    DrawCards(players[nextIdx2], drawPile, 2);
+                    return 1;
 
-        case Symbol.WILD:
-            activeColor = ui.ChooseColor();
-            break;
+                case Symbol.DRAW_FOUR:
+                   
+                    activeColor = ui.ChooseColor();
+                    int nextIdx4 = (currentPlayerIndex + direction + players.Count) % players.Count;
+                    DrawCards(players[nextIdx4], drawPile, 4);
+                    return 1;
+
+                case Symbol.WILD:
+                    activeColor = ui.ChooseColor();
+                    return 0;
+            }
+
+            return 0;
+        }
+
+       
+        private int PlayCard(Player player, Card card, List<Card> drawPile)
+        {
+            player.playerHand.Remove(card);
+
+     
+            if (topCard != null)
+                discardPile.Add(topCard);
+
+            topCard = card;
+
+            if (card.cardColor == Color.WILD)
+                activeColor = ui.ChooseColor();
+            else
+                activeColor = card.cardColor;
+
+            return ApplyCardEffect(card, drawPile);
+        }
     }
-    }
-
-    private bool CanPlayCard(Card card)
-    {
-    return card.cardColor == activeColor ||
-    card.cardColor == Color.WILD ||
-    card.cardValue == topCard.cardValue;
-    }
-
-    private void PlayCard(Player player, Card card, List<Card> deck)
-    {
-    player.playerHand.Remove(card);
-    topCard = card;
-    if (card.cardColor == Color.WILD)
-        activeColor = ui.ChooseColor();
-    else
-        activeColor = card.cardColor;
-    ApplyCardEffect(card, deck);
-    }
-
-}}
+}
