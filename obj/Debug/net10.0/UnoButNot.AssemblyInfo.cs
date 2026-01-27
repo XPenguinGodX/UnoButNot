@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnoButNot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ec9613a759b2465aec8de0c1cff95ee0ccd87c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d6d597086cf7208c4b3049cb69cff8f4f6cdf52")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnoButNot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnoButNot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
