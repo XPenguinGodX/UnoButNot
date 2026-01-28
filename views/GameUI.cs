@@ -157,7 +157,7 @@ namespace GameUI.views
             Console.WriteLine("┌────────────────┐");
             Console.WriteLine($"│ {colorText,-14} │");
             Console.WriteLine("│                │");
-            Console.WriteLine($"│      {valueText,-8}│");
+            Console.WriteLine($"│       {valueText,-8} │");
             Console.WriteLine("│                │");
             Console.WriteLine($"│ {colorText,14} │");
             Console.WriteLine("└────────────────┘");
